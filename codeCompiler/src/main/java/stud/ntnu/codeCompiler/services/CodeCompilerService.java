@@ -10,7 +10,7 @@ import java.io.OutputStream;
 public class CodeCompilerService {
   public static Result compileAndRunCode(String code) {
     Result result = new Result("");
-    String[] dockerCommand = {"docker", "run", "--rm", "-i", "g++", "sh", "-c",
+    String[] dockerCommand = {"docker", "run", "--rm", "-i", "gcc", "sh", "-c",
         "cat > main.cpp && g++ main.cpp -o main && ./main"};
 
     try {
