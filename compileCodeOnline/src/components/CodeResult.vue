@@ -16,7 +16,7 @@ async function compileCodeAndGetResult() {
         result = apiResponse.data["result"];
     } catch (error) {
         //Maybe add error message to result here
-        console.log(error);
+        result = "server not able to be contacted";
     }
     CodeResult.value = result;
 }
@@ -24,12 +24,18 @@ async function compileCodeAndGetResult() {
 
 <template>
 
-    <h1>Enter your code here</h1>
-    <textarea v-model="CodeArea" id="Code"></textarea>
+    <div id="wrapper">
+        <div id="codeWritingSection">
+            <h1>Enter your code here</h1>
+            <textarea v-model="CodeArea" id="Code"></textarea>
+            <button id="CompileButton" @click="compileCodeAndGetResult">Compile and run</button>
+        </div>
 
-    <button id="CompileButton" @click="compileCodeAndGetResult">Compile and run</button>
-    <h1>Output</h1>
-    <p id="CodeResult" >{{ CodeResult }}</p>
+        <div id="codeResultSection">
+            <h1>Output</h1>
+            <p id="CodeResult" >{{ CodeResult }}</p>
+        </div>
+    </div>
 </template>
 
 <style>
@@ -37,6 +43,21 @@ async function compileCodeAndGetResult() {
     background-color: blue;
     color: white;
 }
+
+#wrapper {
+  display: flex;
+    gap: 20px; /* Space between sections */
+    align-items: flex-start; /* Align elements to the top */
+}
+
+#codeWritingSection {
+    flex: 1;
+}
+
+#codeResultSection {
+    flex: 1;
+}
+
 #CodeResult {
     width: 500px;
     height: 500px;

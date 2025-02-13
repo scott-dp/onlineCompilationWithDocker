@@ -18,6 +18,12 @@ header {
   line-height: 1.5;
 }
 
+.wrapper {
+  display: flex;
+    gap: 20px; /* Space between sections */
+    align-items: flex-start; /* Align elements to the top */
+}
+
 .logo {
   display: block;
   margin: 0 auto 2rem;
